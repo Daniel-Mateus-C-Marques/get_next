@@ -6,7 +6,7 @@
 /*   By: danicamp <danicamp@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 12:43:10 by danicamp          #+#    #+#             */
-/*   Updated: 2026/05/11 20:39:49 by danicamp         ###   ########.fr       */
+/*   Updated: 2026/05/14 14:16:09 by danicamp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,12 @@ int	main(void)
 	char *line;
 	
 	line = get_next_line(fd);
-	printf("%s", line);
-	free(line);
-	while (line)
+	while (line && line[0])
 	{
-		line = get_next_line(fd);
 		printf("%s", line);
 		free(line);
+		line = get_next_line(fd);
 	}
+	free(line);
 	close(fd);
-	
 }

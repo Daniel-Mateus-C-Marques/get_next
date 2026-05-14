@@ -6,7 +6,7 @@
 /*   By: danicamp <danicamp@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 12:34:44 by danicamp          #+#    #+#             */
-/*   Updated: 2026/05/11 21:48:49 by danicamp         ###   ########.fr       */
+/*   Updated: 2026/05/14 15:07:05 by danicamp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static char	*read_file(int fd, char *stash)
 	while ((!stash || !ft_strchr(stash, '\n')) && bytes > 0)
 	{
 		bytes = read(fd, temp, BUFFER_SIZE);
-		if (bytes < 0)
-			return (free(temp), NULL);
+		if (bytes == -1 || (!stash && bytes == 0))
+			return (free(temp), free(stash), NULL);
 		temp[bytes] = '\0';
 		stash = ft_strjoin(stash, temp);
 	}
@@ -39,21 +39,23 @@ static char	*line(char *stash)
 {
 	char	*line;
 	int		i;
+	int		j;
 
 	i = 0;
+	j = 0;
 	if (!stash)
 		return (NULL);
 	while (stash[i] && stash[i] != '\n')
 		i++;
-	line = malloc(i + 2);
-	i = 0;
-	while (stash[i] && stash[i] != '\n')
-	{
-		line[i] = stash[i];
+	if (stash[i] == '\n')
 		i++;
+	line = malloc(i + 1);
+	while (j < i)
+	{
+		line[j] = stash[j];
+		j++;
 	}
-	line[i] = stash[i];
-	line[++i] = '\0';
+	line[j] = '\0';
 	return (line);
 }
 
@@ -89,6 +91,8 @@ char	*get_next_line(int fd)
 	stash = read_file(fd, stash);
 	if (!stash)
 		return (stash = NULL, NULL);
+	if (!stash[0])
+		return (free(stash), stash = NULL, NULL);
 	ret = line(stash);
 	stash = rest(stash);
 	return (ret);

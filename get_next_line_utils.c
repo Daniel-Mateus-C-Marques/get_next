@@ -6,7 +6,7 @@
 /*   By: danicamp <danicamp@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 12:35:07 by danicamp          #+#    #+#             */
-/*   Updated: 2026/05/11 20:43:12 by danicamp         ###   ########.fr       */
+/*   Updated: 2026/05/14 13:44:21 by danicamp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!s1)
 	{
 		s1 = malloc(1);
-		s1[i] = '\0';
+		s1[0] = '\0';
 	}
 	if (!s1 || !s2)
 		return (NULL);
@@ -61,6 +61,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	join[0] = '\0';
 	while (s1[++i])
 		join[i] = s1[i];
+	free(s1);
 	while (s2[j])
 		join[i++] = s2[j++];
 	join[i] = '\0';

@@ -8,8 +8,11 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
+                "get_next_line.c",
+                "get_next_line.h",
+                "get_next_line_utils.c",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/a.out"
             ],
             "options": {
                 "cwd": "${fileDirname}"

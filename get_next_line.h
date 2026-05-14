@@ -6,7 +6,7 @@
 /*   By: danicamp <danicamp@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 12:35:47 by danicamp          #+#    #+#             */
-/*   Updated: 2026/05/11 20:53:16 by danicamp         ###   ########.fr       */
+/*   Updated: 2026/05/14 13:59:06 by danicamp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 1000000
 # endif
 
 # include <unistd.h>
