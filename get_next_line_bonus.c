@@ -6,11 +6,11 @@
 /*   By: danicamp <danicamp@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 17:06:20 by danicamp          #+#    #+#             */
-/*   Updated: 2026/05/14 17:12:21 by danicamp         ###   ########.fr       */
+/*   Updated: 2026/09/16 22:00:10 by danicamp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*read_file(int fd, char *stash)
 {
